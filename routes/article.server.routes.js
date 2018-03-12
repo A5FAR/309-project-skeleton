@@ -17,6 +17,8 @@ module.exports = function(app){
 
 app.route('/articles/all').get(articles.listView);
 
+app.route('/articles/:articleId').get(articles.singleView);
+
 app.param('articleId', articles.articleByID);
 
 

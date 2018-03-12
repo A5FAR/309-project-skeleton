@@ -14,15 +14,22 @@ module.exports.listView = function(req, res) {
       console.log("api called");
 
       res.render('./../public/views/article/all.ejs', {
-		user: req.user || null,
-		articles: data
+  		user: req.user || null,
+  		articles: data
   });;
     }
   });
-  
-  
-  
 };
+
+module.exports.singleView = function(req, res) {
+  res.render('./../public/views/article/view.ejs', {
+  		user: req.user || null,
+  		request: req
+  });
+
+}
+
+
 
 module.exports.list = function(req, res) {
   Article.find(function(err, data) {
