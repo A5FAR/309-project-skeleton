@@ -3,7 +3,21 @@ var Article = require('./../models/Article.js');
 var errorHandler = require('./errors.server.controller');
 var _ = require('lodash');
 
-module.exports.listView = function(req, res) {
+module.exports.createView=function(req,res){
+    res.render('./../public/views/article/new.ejs',{
+    user:req.user || null,
+    request:req
+  });
+}
+module.exports.singleView=function(req,res){
+    res.render('./../public/views/article/view.ejs',{
+    user:req.user || null,
+    request:req
+  });
+}
+
+module.exports.listview=function(req,res)
+{
   Article.find(function(err, data) {
     if (err) {
       return res.status(400).send({
@@ -13,23 +27,14 @@ module.exports.listView = function(req, res) {
     } else {
       console.log("api called");
 
-      res.render('./../public/views/article/all.ejs', {
-  		user: req.user || null,
-  		articles: data
-  });;
+      res.render('./../public/views/article/all.ejs',{
+    user:req.user || null,
+    articles: data
+  });
     }
   });
+  
 };
-
-module.exports.singleView = function(req, res) {
-  res.render('./../public/views/article/view.ejs', {
-  		user: req.user || null,
-  		request: req
-  });
-
-}
-
-
 
 module.exports.list = function(req, res) {
   Article.find(function(err, data) {
@@ -40,7 +45,7 @@ module.exports.list = function(req, res) {
   			});
     } else {
       console.log("api called");
-
+      
       res.status(200).send(data);
     }
   });
