@@ -7,15 +7,15 @@
         <h1>Product List</h1>
         <% console.log(products) %>
           <% for(var i=0; i<products.length; i++) { %>
-            <h1> <%= products[i].name %> </h1>
-            <p>
-              <%= product[i].description%>
+            <h1> <p>Name: </p> <%= products[i].name %> </h1>
+            <p> Description: 
+              <%= products[i].description%>
             </p>
-            <p>
-              <%= product[i].price%>
+            <p> Price:
+              <%= products[i].price%>
             </p>
-            <p>
-              <%= product[i].quantity%>
+            <p> Quantity: 
+              <%= products[i].quantity%>
             </p>
             <h3><%= products[i].content%></h3>
             <h3><%= products[i].created%></h3>
